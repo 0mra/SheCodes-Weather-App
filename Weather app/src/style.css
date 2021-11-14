@@ -1,0 +1,46 @@
+body {
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  max-width: 800px;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+h1 {
+  text-align: center;
+  padding: 10px;
+}
+
+h3 {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.time {
+  font-size: larger;
+}
+
+input {
+  margin: 10px 0;
+}
+
+button.search {
+  margin-bottom: 5px;
+}
+
+.current-temp {
+  font-weight: normal;
+}
+
+.conditions {
+  float: right;
+  margin-top: -150px;
+}
+
+.col {
+  border: 1px solid black;
+  border-radius: 20px;
+  margin: 20px 10px;
+  text-align: center;
+}
