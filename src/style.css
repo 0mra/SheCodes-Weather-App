@@ -1,12 +1,3 @@
-body {
-  display: block;
-  margin: 0 auto;
-  margin-top: 20px;
-  max-width: 800px;
-  border: 1px solid black;
-  border-radius: 20px;
-}
-
 h1 {
   text-align: center;
   padding: 10px;
@@ -17,16 +8,16 @@ h3 {
   text-align: center;
 }
 
-.time {
-  font-size: larger;
-}
-
 input {
   margin: 10px 0;
 }
 
 button.search {
   margin-bottom: 5px;
+}
+
+.time {
+  font-size: larger;
 }
 
 .current-temp {
@@ -36,6 +27,12 @@ button.search {
 .conditions {
   float: right;
   margin-top: -150px;
+  margin-right: 10px;
+}
+
+.row {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .col {
@@ -43,4 +40,18 @@ button.search {
   border-radius: 20px;
   margin: 20px 10px;
   text-align: center;
+}
+
+.weather-app {
+  max-width: 800px;
+  display: block;
+  margin: 20px 0;
+
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.wrapper {
+  max-width: 800px;
+  margin: 0 auto;
 }

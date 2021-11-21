@@ -27,8 +27,6 @@ let months = [
   "December",
 ];
 
-let ending = ["st", "nd", "rd", "th"];
-
 let month = months[now.getMonth()];
 
 let date = now.getDate();
