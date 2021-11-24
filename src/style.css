@@ -1,23 +1,30 @@
-h1 {
-  text-align: center;
-  padding: 10px;
+.weather-app {
+  background-color: #d8ceca;
+  color: #763242;
 }
-
 h3 {
-  margin: 20px 0;
-  text-align: center;
+  margin-top: 20px;
+  margin-left: 20px;
+  text-align: left;
 }
 
 input {
-  margin: 10px 0;
+  margin-top: 10px;
+  margin-left: 20px;
 }
 
-button.search {
-  margin-bottom: 5px;
+.location-btn {
+  margin-left: 20px;
+}
+
+.date {
+  font-size: larger;
+  margin-left: 20px;
 }
 
 .time {
   font-size: larger;
+  margin-left: 20px;
 }
 
 .current-temp {

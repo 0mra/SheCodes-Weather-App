@@ -33,9 +33,6 @@ let date = now.getDate();
 
 let year = now.getFullYear();
 
-let heading = document.querySelector("h1");
-heading.innerHTML = `${day}, ${month} ${date}, ${year}`;
-
 let hours = now.getHours();
 if (hours < 10) {
   hours = `0${hours}`;
@@ -46,6 +43,8 @@ if (minutes < 10) {
   minutes = `0${minutes}`;
 }
 
+let currentDate = document.querySelector(".date");
+currentDate.innerHTML = `It is ${day}, ${month} ${date}, ${year}`;
 let currentTime = document.querySelector(".time");
 currentTime.innerHTML = `Last updated: ${hours}:${minutes}`;
 
