@@ -34,7 +34,7 @@ let date = now.getDate();
 let year = now.getFullYear();
 
 let heading = document.querySelector("h1");
-heading.innerHTML = ` ${day}, ${month} ${date}, ${year}`;
+heading.innerHTML = `${day}, ${month} ${date}, ${year}`;
 
 let hours = now.getHours();
 if (hours < 10) {
@@ -47,7 +47,7 @@ if (minutes < 10) {
 }
 
 let currentTime = document.querySelector(".time");
-currentTime.innerHTML = `${hours}:${minutes}`;
+currentTime.innerHTML = `Last updated: ${hours}:${minutes}`;
 
 function search(event) {
   event.preventDefault();
@@ -79,6 +79,13 @@ function showTemperature(response) {
   let currentHumidity = document.querySelector(".humidity");
   let humidityMessage = `Humidity: ${humidity}%`;
   currentHumidity.innerHTML = humidityMessage;
+  celsius = response.data.main.temp;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function showPosition(position) {
@@ -86,7 +93,6 @@ function showPosition(position) {
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showTemperature);
-  console.log(apiUrl);
 }
 
 function getCurrentPosition(event) {
@@ -96,19 +102,35 @@ function getCurrentPosition(event) {
 let locationButton = document.querySelector(".location-btn");
 locationButton.addEventListener("click", getCurrentPosition);
 
-//function changeUnit(event) {
-//event.preventDefault();
-//let temp = document.querySelector(".current-temp");
+let apiKey = "3befe0a338caeea10bbbcf2339b136d4";
+let units = "metric";
+let city = "Lisbon";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+axios.get(apiUrl).then(showTemperature);
+let temp = true;
 
-//if (unit.innerHTML === "°F") {
-//temp.innerHTML = "66°F";
-//unit.innerHTML = "°C";
-//} else {
-//temp.innerHTML = "19°C";
-//unit.innerHTML = "°F";
-//}
-//}
+function changeUnitF() {
+  let currentTemp = document.querySelector(".current-temp");
+  let fahrenheit = Math.round((celsius * 9) / 5 + 32);
+  currentTemp.innerHTML = `${fahrenheit}°F`;
+  fahrenheitButton.innerHTML = "°C";
+}
 
-//let unit = document.querySelector(".unit");
+function changeUnitC() {
+  let currentTemp = document.querySelector(".current-temp");
+  let celsiusTemp = Math.round(celsius);
+  currentTemp.innerHTML = `${celsiusTemp}°C`;
+  fahrenheitButton.innerHTML = "°F";
+}
 
-//unit.addEventListener("click", changeUnit);
+function changeUnit(event) {
+  event.preventDefault();
+  if (temp) changeUnitF();
+  else changeUnitC();
+  temp = !temp;
+}
+
+let celsius = null;
+
+let fahrenheitButton = document.querySelector(".unit");
+fahrenheitButton.addEventListener("click", changeUnit);
