@@ -30,21 +30,27 @@
               id="search-text-input"
             />
 
-            <input type="submit" value="Search" />
+            <input
+              class="btn btn-outline-dark search-btn"
+              type="submit"
+              value="Search"
+            />
           </form>
 
-          <button type="button" class="btn btn-primary location-btn">
+          <button type="button" class="btn btn-outline-dark location-btn">
             Current location
           </button>
 
           <h3>
             <div class="current">
               <div class="city"></div>
-              <div class="icon"><img src="" alt="Clear" id="icon" /></div>
-              <div class="current-temp"></div>
+              <div id="description"></div>
+              <span class="icon"><img src="" alt="Clear" id="icon" /></span>
+              <span class="current-temp"></span>
               <button type="button" class="btn btn-outline-dark unit">
                 °F
               </button>
+              <div class="feels">Feels like</div>
             </div>
           </h3>
 

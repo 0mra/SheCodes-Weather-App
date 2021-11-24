@@ -65,21 +65,29 @@ form.addEventListener("submit", search);
 function showTemperature(response) {
   let city = response.data.name;
   let cityName = document.querySelector(".city");
-  cityName.innerHTML = city;
+  let description = response.data.weather[0].description;
+  let descriptionElement = document.querySelector("#description");
   let temperature = Math.round(response.data.main.temp);
   let currentTemp = document.querySelector(".current-temp");
   let tempMessage = `${temperature}°C`;
-  currentTemp.innerHTML = tempMessage;
   let wind = response.data.wind.speed;
   let windSpeed = document.querySelector(".wind");
   let windMessage = `Wind: ${wind} km/h`;
-  windSpeed.innerHTML = windMessage;
   let humidity = response.data.main.humidity;
   let currentHumidity = document.querySelector(".humidity");
   let humidityMessage = `Humidity: ${humidity}%`;
-  currentHumidity.innerHTML = humidityMessage;
-  celsius = response.data.main.temp;
+  feels = response.data.main.feels_like;
+  let feelsLike = document.querySelector(".feels");
+  let feelsTemp = Math.round(feels);
   let iconElement = document.querySelector("#icon");
+
+  cityName.innerHTML = city;
+  descriptionElement.innerHTML = description;
+  currentTemp.innerHTML = tempMessage;
+  windSpeed.innerHTML = windMessage;
+  currentHumidity.innerHTML = humidityMessage;
+  feelsLike.innerHTML = `Feels like: ${feelsTemp}°C`;
+  celsius = response.data.main.temp;
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
@@ -113,6 +121,9 @@ function changeUnitF() {
   let fahrenheit = Math.round((celsius * 9) / 5 + 32);
   currentTemp.innerHTML = `${fahrenheit}°F`;
   fahrenheitButton.innerHTML = "°C";
+  let feelsLike = document.querySelector(".feels");
+  let feelsTemp = Math.round((feels * 9) / 5 + 32);
+  feelsLike.innerHTML = `Feels like: ${feelsTemp}°C`;
 }
 
 function changeUnitC() {
@@ -120,6 +131,9 @@ function changeUnitC() {
   let celsiusTemp = Math.round(celsius);
   currentTemp.innerHTML = `${celsiusTemp}°C`;
   fahrenheitButton.innerHTML = "°F";
+  let feelsLike = document.querySelector(".feels");
+  let feelsTemp = Math.round(feels);
+  feelsLike.innerHTML = `Feels like: ${feelsTemp}°C`;
 }
 
 function changeUnit(event) {
@@ -130,6 +144,7 @@ function changeUnit(event) {
 }
 
 let celsius = null;
+let feels = null;
 
 let fahrenheitButton = document.querySelector(".unit");
 fahrenheitButton.addEventListener("click", changeUnit);
