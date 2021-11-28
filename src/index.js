@@ -69,7 +69,7 @@ function displayForecast() {
   days.forEach(function (day) {
     forecastHTML =
       forecastHTML +
-      `              <div class="col-2">
+      `              <div class="col">
                 <div class="day">${day}</div>
                 <div class="emoji">🌤</div>
                 <div class="temp">21° | 11°</div>
