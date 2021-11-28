@@ -44,7 +44,7 @@ if (minutes < 10) {
 }
 
 let currentDate = document.querySelector(".date");
-currentDate.innerHTML = `It is ${day}, ${month} ${date}, ${year}`;
+currentDate.innerHTML = `${day}, ${month} ${date}, ${year}`;
 let currentTime = document.querySelector(".time");
 currentTime.innerHTML = `Last updated: ${hours}:${minutes}`;
 

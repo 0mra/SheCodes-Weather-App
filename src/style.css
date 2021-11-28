@@ -35,8 +35,8 @@ a {
 
 img {
   width: 150px;
-  margin-left: -20px;
-  margin-right: -20px;
+  position: relative;
+  right: 28px;
 }
 
 .wrapper {
@@ -50,7 +50,7 @@ img {
   max-width: 800px;
   display: block;
   margin: 20px 0 0 0;
-  border: 1px solid black;
+  border: 1px solid #7a455b;
   border-radius: 20px;
 }
 
@@ -65,12 +65,6 @@ img {
   font-size: larger;
   margin-right: 20px;
   text-align: right;
-}
-
-.conditions {
-  float: right;
-  margin-top: -150px;
-  margin-right: 20px;
 }
 
 .search-btn {
@@ -113,6 +107,9 @@ img {
 .current-temp {
   font-weight: normal;
   font-size: 25px;
+  position: relative;
+  bottom: 16px;
+  right: 51px;
 }
 
 .unit {
@@ -121,7 +118,9 @@ img {
   size: 25px;
   padding: 0 8px;
   font-size: 25px;
-  margin-top: 10px;
+  position: relative;
+  bottom: 19px;
+  right: 49px;
 }
 
 .unit:hover {
@@ -133,6 +132,15 @@ img {
 .feels {
   font-size: large;
   font-weight: normal;
+  position: relative;
+  bottom: 67px;
+  left: 107px;
+}
+
+.conditions {
+  float: right;
+  margin-right: 20px;
+  margin-top: -180px;
 }
 
 .row {
