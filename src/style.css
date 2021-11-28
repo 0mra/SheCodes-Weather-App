@@ -21,6 +21,10 @@ input {
   color: #7a455b;
 }
 
+input:focus {
+  outline: none;
+}
+
 small {
   color: white;
 }
