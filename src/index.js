@@ -62,6 +62,25 @@ function search(event) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `              <div class="col">
+                <div class="day">${day}</div>
+                <div class="emoji">🌤</div>
+                <div class="temp">21° | 11°</div>
+              </div>
+            `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showTemperature(response) {
   let city = response.data.name;
   let cityName = document.querySelector(".city");
@@ -148,3 +167,5 @@ let feels = null;
 
 let fahrenheitButton = document.querySelector(".unit");
 fahrenheitButton.addEventListener("click", changeUnit);
+
+displayForecast();
