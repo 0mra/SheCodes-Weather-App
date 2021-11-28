@@ -62,7 +62,7 @@ function search(event) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 
-function displayForecast() {
+function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
@@ -81,9 +81,19 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+  let apiKey = "3befe0a338caeea10bbbcf2339b136d4";
+  let units = "metric";
+  let excluded = "current,minutely,hourly,alerts";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=${excluded}&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function showTemperature(response) {
   let city = response.data.name;
   let cityName = document.querySelector(".city");
+  let country = response.data.sys.country;
+  let countryName = document.querySelector(".country");
   let description = response.data.weather[0].description;
   let descriptionElement = document.querySelector("#description");
   let temperature = Math.round(response.data.main.temp);
@@ -101,6 +111,7 @@ function showTemperature(response) {
   let iconElement = document.querySelector("#icon");
 
   cityName.innerHTML = city;
+  countryName.innerHTML = country;
   descriptionElement.innerHTML = description;
   currentTemp.innerHTML = tempMessage;
   windSpeed.innerHTML = windMessage;
@@ -112,6 +123,8 @@ function showTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 function showPosition(position) {
@@ -167,5 +180,3 @@ let feels = null;
 
 let fahrenheitButton = document.querySelector(".unit");
 fahrenheitButton.addEventListener("click", changeUnit);
-
-displayForecast();
