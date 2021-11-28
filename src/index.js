@@ -111,7 +111,7 @@ locationButton.addEventListener("click", getCurrentPosition);
 
 let apiKey = "3befe0a338caeea10bbbcf2339b136d4";
 let units = "metric";
-let city = "Lisbon";
+let city = "Poznań";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
 axios.get(apiUrl).then(showTemperature);
 let temp = true;

@@ -112,7 +112,7 @@ img {
   font-size: 25px;
   position: relative;
   bottom: 16px;
-  right: 51px;
+  right: 45px;
 }
 
 .unit {
@@ -123,7 +123,7 @@ img {
   font-size: 25px;
   position: relative;
   bottom: 19px;
-  right: 49px;
+  right: 43px;
   z-index: 1;
 }
 
@@ -138,7 +138,7 @@ img {
   font-weight: normal;
   position: relative;
   bottom: 67px;
-  left: 107px;
+  left: 112px;
 }
 
 .conditions {
