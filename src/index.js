@@ -45,6 +45,7 @@ if (minutes < 10) {
 
 let currentDate = document.querySelector(".date");
 currentDate.innerHTML = `${day}, ${month} ${date}, ${year}`;
+
 let currentTime = document.querySelector(".time");
 currentTime.innerHTML = `Last updated: ${hours}:${minutes}`;
 
@@ -85,9 +86,11 @@ function displayForecast(response) {
             forecastDay.weather[0].icon
           }@2x.png" id="emoji" 
         /> </div>
-                <div class="temp">${Math.round(
-                  forecastDay.temp.max
-                )}° | ${Math.round(forecastDay.temp.min)}°</div>
+                <div class="temp"><span class="temp-min">${Math.round(
+                  forecastDay.temp.min
+                )}</span>° | <span class="temp-max">${Math.round(
+          forecastDay.temp.max
+        )}</span>°</div>
               </div>
             `;
     }
@@ -172,6 +175,18 @@ function changeUnitF() {
   let feelsLike = document.querySelector(".feels");
   let feelsTemp = Math.round((feels * 9) / 5 + 32);
   feelsLike.innerHTML = `Feels like: ${feelsTemp}°C`;
+
+  let maxForecast = document.querySelectorAll(".temp-max");
+  maxForecast.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = Math.round((currentTemp * 9) / 5 + 32);
+  });
+
+  let minForecast = document.querySelectorAll(".temp-min");
+  minForecast.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = Math.round((currentTemp * 9) / 5 + 32);
+  });
 }
 
 function changeUnitC() {
@@ -182,6 +197,20 @@ function changeUnitC() {
   let feelsLike = document.querySelector(".feels");
   let feelsTemp = Math.round(feels);
   feelsLike.innerHTML = `Feels like: ${feelsTemp}°C`;
+
+  let maxForecast = document.querySelectorAll(".temp-max");
+  maxForecast.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+
+    item.innerHTML = Math.round((currentTemp - 32) * (5 / 9));
+  });
+
+  let minForecast = document.querySelectorAll(".temp-min");
+  minForecast.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+
+    item.innerHTML = Math.round((currentTemp - 32) * (5 / 9));
+  });
 }
 
 function changeUnit(event) {
